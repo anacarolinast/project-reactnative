@@ -1,93 +1,95 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { Input, Button, Avatar } from "react-native-elements"; 
-import Icon from 'react-native-vector-icons/FontAwesome';
-
-const Register = () => {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.textH1}>Cadastre-se</Text>
-      <Text style={styles.textH2}>Olá! Digite suas informações abaixo...</Text>
-      <View style={styles.inputWrapper}>
-        <Input
-          placeholder='Nome'
-          leftIcon={
-            <Icon
-              name='user'
-              size={24}
-              color='black'
-            />
-          }
-          containerStyle={styles.inputContainer}
-        />
-        <Input
-          placeholder='E-mail'
-          leftIcon={
-            <Icon
-              name='envelope'
-              size={24}
-              color='black'
-            />
-          }
-          containerStyle={styles.inputContainer}
-        />
-        <Input
-          placeholder='Senha'
-          secureTextEntry={true}
-          type='password'
-          leftIcon={
-            <Icon
-              name='lock'
-              size={24}
-              color='black'
-            />
-          }
-          containerStyle={styles.inputContainer}
-        />
-      </View>
-      <Button
-        title="Cadastrar"
-        type="outline"
-      />
-    </View>
-  );
-};
+import { Input } from "react-native-elements";
+import { Button } from '@rneui/themed';
 
 const Login = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.textH1}>Login</Text>
-      <Text style={styles.textH2}>Olá! Digite suas informações de login...</Text>
-      <Avatar size={120} rounded icon={{ name: 'user' }} containerStyle={styles.avatar} />
-      <View style={styles.inputWrapper}>
+      <View style={styles.formContainer}>
+        <Text style={styles.textH1}>Login</Text>
+        <Text style={styles.textH2}>
+          Seja bem-vindo! Digite suas informações abaixo...
+        </Text>
         <Input
-          placeholder='E-mail'
-          leftIcon={
-            <Icon
-              name='envelope'
-              size={24}
-              color='black'
-            />
-          }
+          placeholder="E-mail"
           containerStyle={styles.inputContainer}
+          inputContainerStyle={styles.input}
+          placeholderTextColor="white"
+          inputStyle={{ color: "white" }}
         />
         <Input
-          placeholder='Senha'
+          placeholder="Senha"
           secureTextEntry={true}
-          leftIcon={
-            <Icon
-              name='lock'
-              size={24}
-              color='black'
-            />
-          }
           containerStyle={styles.inputContainer}
+          inputContainerStyle={styles.input}
+          placeholderTextColor="white"
+          inputStyle={{ color: "white" }}
+        />
+        <Button 
+          title="Entrar" 
+          type="outline" 
+          containerStyle={styles.buttonContainer} 
+          buttonStyle={styles.firstButton} 
+          titleStyle={styles.buttonText} 
+        />
+        <Button 
+          title="Não tem conta? Registre-se!" 
+          type="outline" 
+          containerStyle={styles.buttonContainer} 
+          buttonStyle={styles.secondButton} 
+          titleStyle={styles.buttonText} 
         />
       </View>
-      <Button
-        title="Entrar"
-        type="outline"
-      />
+    </View>
+  );
+};
+
+const Register = () => {
+  return (
+    <View style={styles.container}>
+      <View style={styles.formContainer}>
+        <Text style={styles.textH1}>Registre-se</Text>
+        <Text style={styles.textH2}>
+          Olá! Digite seus dados abaixo...
+        </Text>
+        <Input
+          placeholder="Nome"
+          containerStyle={styles.inputContainer}
+          inputContainerStyle={styles.input}
+          placeholderTextColor="white"
+          inputStyle={{ color: "white" }}
+        />
+        <Input
+          placeholder="E-mail"
+          containerStyle={styles.inputContainer}
+          inputContainerStyle={styles.input}
+          placeholderTextColor="white"
+          inputStyle={{ color: "white" }}
+        />
+        <Input
+          placeholder="Senha"
+          secureTextEntry={true}
+          containerStyle={styles.inputContainer}
+          inputContainerStyle={styles.input}
+          placeholderTextColor="white"
+          inputStyle={{ color: "white" }}
+        />
+        <Button 
+          title="Registrar" 
+          type="outline" 
+          containerStyle={styles.buttonContainer} 
+          buttonStyle={styles.firstButton} 
+          titleStyle={styles.buttonText} 
+        />
+        <Button 
+          title="Já tem conta? Faça login!" 
+          type="outline" 
+          containerStyle={styles.buttonContainer} 
+          buttonStyle={styles.secondButton} 
+          titleStyle={styles.buttonText} 
+        />
+      </View>
     </View>
   );
 };
@@ -97,27 +99,59 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "#5E17A6",
   },
   textH1: {
     fontSize: 24,
     fontWeight: "bold",
+    marginTop: 24,
     paddingBottom: 12,
+    color: "white",
   },
   textH2: {
-    fontSize: 12,
-    paddingBottom: 24
+    fontSize: 14,
+    paddingBottom: 48,
+    color: "white",
   },
-  inputWrapper: {
-    width: '40%',
+  formContainer: {
+    width: "30%",
+    height: "70%",
+    backgroundColor: "#0D0D0D",
+    padding: 20,
+    borderRadius: 10,
+    alignItems: "center",
+    elevation: 5,
   },
   inputContainer: {
-    width: '100%',
-    marginBottom: 12
+    width: "80%",
+    marginBottom: 8,
+    borderColor: "#610BD9",
   },
-  avatar: {
-    backgroundColor: 'gray',
-    marginBottom: 72
-  }
+  input: {
+    borderColor: "#610BD9",
+    borderWidth: 2,
+    borderRadius: 16,
+    paddingVertical: 2,
+    paddingHorizontal: 8,
+    color: "white",
+    placeholderTextColor: "white",
+  },
+  buttonContainer: {
+    marginTop: 16,
+    width: "75%",
+    borderRadius: 16,
+  },
+  firstButton: {
+    backgroundColor: "#6907F2",
+    borderWidth: 0
+  },
+  secondButton: {
+    backgroundColor: "#610BD9",
+    borderWidth: 0
+  },
+  buttonText: {
+    color: "white",
+  },
 });
 
-export default Login;
+export default Register;

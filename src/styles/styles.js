@@ -7,6 +7,21 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#5E17A6",
   },
+  formContainer: {
+    width: "25%",
+    height: "80%",
+    backgroundColor: "#0D0D0D",
+    padding: 20,
+    borderRadius: 10,
+    alignItems: "center",
+    elevation: 5,
+  },
+  options: {
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    width: "100%",
+    gap: 4,
+  },
   textH1: {
     fontSize: 32,
     fontWeight: "bold",
@@ -16,17 +31,8 @@ const styles = StyleSheet.create({
   },
   textH2: {
     fontSize: 14,
-    paddingBottom: 48,
+    paddingBottom: 32,
     color: "white",
-  },
-  formContainer: {
-    width: "25%",
-    height: "70%",
-    backgroundColor: "#0D0D0D",
-    padding: 20,
-    borderRadius: 10,
-    alignItems: "center",
-    elevation: 5,
   },
   inputContainer: {
     width: "80%",
@@ -41,6 +47,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     color: "white",
     placeholderTextColor: "white",
+    height: 30,
   },
   buttonContainer: {
     marginTop: 16,
@@ -49,13 +56,24 @@ const styles = StyleSheet.create({
   },
   firstButton: {
     backgroundColor: "#6907F2",
-    borderWidth: 0
+    borderWidth: 0,
   },
   secondButton: {
     backgroundColor: "#610BD9",
-    borderWidth: 0
+    borderWidth: 0,
   },
   buttonText: {
+    color: "white",
+  },
+  flatList: {
+    flex: 1,
+    width: "100%",
+  },
+  listItem: {
+    flex: 1,
+  },
+  infoContact: {
+    fontSize: 24,
     color: "white",
   },
 });

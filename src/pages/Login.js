@@ -11,6 +11,10 @@ const Login = () => {
     const handleNavigateToRegister = () => {
         navigation.navigate('Register');
     };
+
+    const handleNavigateToContacts = () => {
+        navigation.navigate('Contacts');
+    };
     return (
         <View style={styles.container}>
             <View style={styles.formContainer}>
@@ -39,6 +43,7 @@ const Login = () => {
                     containerStyle={styles.buttonContainer}
                     buttonStyle={styles.firstButton}
                     titleStyle={styles.buttonText}
+                    onPress={handleNavigateToContacts}
                 />
                 <Button
                     title="Não tem conta? Registre-se!"

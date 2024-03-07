@@ -4,16 +4,42 @@ import { Avatar, Button } from "@rneui/base";
 import { Input } from "react-native-elements";
 import styles from "../styles/styles";
 import { useNavigation } from "@react-navigation/native";
+import axios from "axios";
 
 const AddContact = () => {
   const navigation = useNavigation();
-
-  const handleNavigateToContacts = () => {
-    navigation.navigate('Contacts');
-};
-
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");  
+
+  const handleAddContact = async () => {
+    try {
+      console.log("Adding contact...");
+      console.log("Name:", name);
+      console.log("Phone:", phone);
+      console.log("Email:", email);
+  
+      if (!name || !phone || !email) {
+        console.error("Preencha todos os campos");
+        return;
+      }
+      
+      await axios.post("http://localhost:3000/contacts", {
+        name: name.toString(), 
+        phone: phone.toString(),
+        email: email.toString(),
+      });
+  
+      navigation.navigate("Contacts");
+    } catch (error) {
+      console.error("Error adding contact:", error);
+    }
+  };
+  
+  
+  const handleNavigateToContacts = () => {
+    navigation.navigate("Contacts");
+  };
 
   return (
     <View style={styles.container}>
@@ -34,22 +60,23 @@ const AddContact = () => {
           inputContainerStyle={styles.input}
           placeholderTextColor="white"
           inputStyle={{ color: "white" }}
+          onChangeText={(value) => setName(value)}
         />
         <Input
           placeholder="Telefone"
-          secureTextEntry={true}
           containerStyle={styles.inputContainer}
           inputContainerStyle={styles.input}
           placeholderTextColor="white"
           inputStyle={{ color: "white" }}
+          onChange={(value) => setPhone(value)}
         />
         <Input
           placeholder="E-mail"
-          secureTextEntry={true}
           containerStyle={styles.inputContainer}
           inputContainerStyle={styles.input}
           placeholderTextColor="white"
           inputStyle={{ color: "white" }}
+          onChangeText={(value) => setEmail(value)}
         />
         <Button
           title="Cancelar"
@@ -65,7 +92,7 @@ const AddContact = () => {
           containerStyle={styles.buttonContainer}
           buttonStyle={styles.secondButton}
           titleStyle={styles.buttonText}
-          onPress={handleNavigateToContacts}
+          onPress={handleAddContact}
         />
       </View>
     </View>

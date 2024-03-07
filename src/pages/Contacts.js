@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, FlatList } from "react-native";
 import { ListItem, Avatar, SearchBar } from "@rneui/base";
 import { HiOutlineDotsVertical, HiOutlinePlus } from "react-icons/hi";
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "react-native-svg";
+import axios from "axios";
 import styles from "../styles/styles";
 
 const Contacts = () => {
@@ -15,38 +16,23 @@ const Contacts = () => {
 
   const handleNavigateToInfoContact = (contact) => {
     navigation.navigate("InfoContact", { contact });
-  };
-  
+  };  
 
   const [value, setValue] = useState("");
-  const [contacts, setContacts] = useState([
-    {
-      id: 1,
-      name: "Angus Young",
-      avatar:
-        "https://i.pinimg.com/564x/5b/85/88/5b858820503fcd29328779aef516a1b3.jpg",
-    },
-    {
-      id: 2,
-      name: "David Bowie",
-      avatar:
-        "https://ffw.uol.com.br/app/uploads/noticias/2016/01/tumblr-n1u1brlnds1qlcugro1-1280.jpg",
-    },
-    {
-      id: 3,
-      name: "Jimmy Page",
-    },
-    {
-      id: 4,
-      name: "Sheryl Crow",
-    },
-    {
-      id: 5,
-      name: "Stevie Nicks",
-      avatar:
-        "https://i2-prod.mirror.co.uk/incoming/article12600089.ece/ALTERNATES/s1200b/Stevie-Nicks.jpg",
-    },
-  ]);
+  const [contacts, setContacts] = useState([]);
+
+  useEffect(() => {
+    async function fetchContacts() {
+      try {
+        const response = await axios.get("http://localhost:3000/contacts");
+        setContacts(response.data);
+      } catch (error) {
+        console.error("Error fetching contacts:", error);
+      }
+    }
+
+    fetchContacts();
+  }, []);
 
   const generateRandomColor = () => {
     return "#" + Math.floor(Math.random() * 16777215).toString(16);
@@ -125,7 +111,7 @@ const Contacts = () => {
                   gap: 16,
                   cursor: "pointer",
                 }}
-                onClick={handleNavigateToInfoContact}
+                onClick={() => handleNavigateToInfoContact(item)}
               >
                 {item.avatar ? (
                   <Avatar

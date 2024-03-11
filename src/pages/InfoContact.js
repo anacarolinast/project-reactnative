@@ -3,19 +3,32 @@ import { View, Text } from "react-native";
 import { Avatar } from "@rneui/base";
 import { Button } from "@rneui/themed";
 import { useNavigation } from "@react-navigation/native";
-import styles from "../styles/styles";
 import { HiArrowLeft } from "react-icons/hi";
+import axios from "axios";
+import styles from "../styles/styles";
 
-const InfoContact = () => {
+const InfoContact = ({ route }) => {
+  const { contact } = route.params;
   const navigation = useNavigation();
 
   const handleNavigateToContacts = () => {
     navigation.navigate("Contacts");
   };
 
-  const handleEditContact = () => {};
+  const handleEditContact = () => { };
 
-  const handleDeleteContact = () => {};
+  const handleDeleteContact = async () => {
+    try {
+      await axios.delete(`http://localhost:3000/contacts/${contact.id}`);
+      navigation.navigate("Contacts");
+    } catch (error) {
+      console.error("Error deleting contact:", error);
+    }
+  };
+
+  const generateRandomColor = () => {
+    return "#" + Math.floor(Math.random() * 16777215).toString(16);
+  };
 
   return (
     <View style={styles.container}>
@@ -34,15 +47,19 @@ const InfoContact = () => {
         <Avatar
           rounded
           source={{
-            uri: "https://i.pinimg.com/564x/5b/85/88/5b858820503fcd29328779aef516a1b3.jpg",
+            uri: contact.avatar ? contact.avatar : null,
           }}
           size={96}
           activeOpacity={0.7}
-          containerStyle={{ marginTop: 24 }}
+          containerStyle={{
+            marginTop: 24,
+            backgroundColor: contact.avatar ? undefined : generateRandomColor(),
+          }}
         />
-        <Text style={styles.textH1}>Angus Young</Text>
-        <Text style={styles.infoContact}>(81) 99902-0943</Text>
-        <Text style={styles.infoContact}>angusyoung@gmail.com</Text>
+
+        <Text style={styles.textH1}>{contact.name}</Text>
+        <Text style={styles.infoContact}>{contact.phone}</Text>
+        <Text style={styles.infoContact}>{contact.email}</Text>
         <Button
           title="Alterar"
           type="outline"
@@ -57,6 +74,7 @@ const InfoContact = () => {
           containerStyle={styles.buttonContainer}
           buttonStyle={styles.secondButton}
           titleStyle={styles.buttonText}
+          onPress={handleDeleteContact}
         />
       </View>
     </View>

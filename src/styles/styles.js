@@ -34,6 +34,12 @@ const styles = StyleSheet.create({
     paddingBottom: 32,
     color: "white",
   },
+  textContact: {
+    fontSize: 32,
+    fontWeight: "bold",
+    paddingBottom: 4,
+    color: "white",
+  },
   inputContainer: {
     width: "85%",
     marginBottom: 8,
@@ -73,7 +79,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   infoContact: {
-    fontSize: 24,
+    fontSize: 16,
     color: "white",
   }
 });

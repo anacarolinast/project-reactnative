@@ -15,7 +15,9 @@ const InfoContact = ({ route }) => {
     navigation.navigate("Contacts");
   };
 
-  const handleEditContact = () => { };
+  const handleNavigateToEditContact = () => {
+    navigation.navigate("EditContact", { contact });
+  };
 
   const handleDeleteContact = async () => {
     try {
@@ -49,15 +51,16 @@ const InfoContact = ({ route }) => {
           source={{
             uri: contact.avatar ? contact.avatar : null,
           }}
-          size={96}
+          size={108}
           activeOpacity={0.7}
           containerStyle={{
             marginTop: 24,
+            marginBottom: 16,
             backgroundColor: contact.avatar ? undefined : generateRandomColor(),
           }}
         />
 
-        <Text style={styles.textH1}>{contact.name}</Text>
+        <Text style={styles.textContact}>{contact.name}</Text>
         <Text style={styles.infoContact}>{contact.phone}</Text>
         <Text style={styles.infoContact}>{contact.email}</Text>
         <Button
@@ -66,7 +69,7 @@ const InfoContact = ({ route }) => {
           containerStyle={styles.buttonContainer}
           buttonStyle={styles.firstButton}
           titleStyle={styles.buttonText}
-          onPress={handleNavigateToContacts}
+          onPress={handleNavigateToEditContact}
         />
         <Button
           title="Excluir"

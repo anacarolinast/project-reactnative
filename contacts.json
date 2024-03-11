@@ -5,7 +5,7 @@
       "name": "Angus Young",
       "avatar": "https://i.pinimg.com/564x/5b/85/88/5b858820503fcd29328779aef516a1b3.jpg",
       "phone": "81986594217",
-      "email": ""
+      "email": "angusyoung@gmail.com"
     },
     {
       "id": 2,
@@ -30,6 +30,12 @@
       "name": "Stevie Nicks",
       "avatar": "https://i2-prod.mirror.co.uk/incoming/article12600089.ece/ALTERNATES/s1200b/Stevie-Nicks.jpg",
       "phone": "81986594217"
+    },
+    {
+      "name": "Malcolm Young",
+      "phone": "[object Object]",
+      "email": "malcomyoung@gmail.com",
+      "id": 6
     }
   ]
 }

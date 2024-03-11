@@ -6,6 +6,7 @@ import Login from "./src/pages/Login";
 import Contacts from "./src/pages/Contacts";
 import AddContact from "./src/pages/AddContact";
 import InfoContact from "./src/pages/InfoContact";
+import EditContact from "./src/pages/EditContact";
 
 const Stack = createNativeStackNavigator();
 
@@ -14,13 +15,18 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="Login"
-          component={Login}
+          name="Contacts"
+          component={Contacts}
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="Contacts"
-          component={Contacts}
+          name="EditContact"
+          component={EditContact}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Login"
+          component={Login}
           options={{ headerShown: false }}
         />
         <Stack.Screen

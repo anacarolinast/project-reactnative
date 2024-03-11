@@ -16,7 +16,6 @@ const Contacts = () => {
   const handleNavigateToInfoContact = (contact) => {
     navigation.navigate("InfoContact", { contact });
   };
-  
 
   const [value, setValue] = useState("");
   const [contacts, setContacts] = useState([

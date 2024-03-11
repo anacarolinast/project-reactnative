@@ -35,31 +35,31 @@ const styles = StyleSheet.create({
     color: "white",
   },
   inputContainer: {
-    width: "80%",
+    width: "85%",
     marginBottom: 8,
-    borderColor: "#610BD9",
+    borderColor: "#A544E6",
   },
   input: {
-    borderColor: "#610BD9",
-    borderWidth: 2,
-    borderRadius: 16,
+    borderColor: "#A544E6",
+    borderWidth: 3,
+    borderRadius: 8,
     paddingVertical: 2,
     paddingHorizontal: 8,
     color: "white",
     placeholderTextColor: "white",
-    height: 30,
+    height: 36,
   },
   buttonContainer: {
     marginTop: 16,
-    width: "75%",
-    borderRadius: 16,
+    width: "80%",
+    borderRadius: 8,
   },
   firstButton: {
     backgroundColor: "#6907F2",
     borderWidth: 0,
   },
   secondButton: {
-    backgroundColor: "#610BD9",
+    backgroundColor: "#A544E6",
     borderWidth: 0,
   },
   buttonText: {
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   },
   flatList: {
     flex: 1,
-    width: "100%",
+    width: "100%"
   },
   listItem: {
     flex: 1,
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   infoContact: {
     fontSize: 24,
     color: "white",
-  },
+  }
 });
 
 export default styles;

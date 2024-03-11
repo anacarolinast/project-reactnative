@@ -10,7 +10,6 @@ const Register = () => {
     const [cpf, setCpf] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
     const handleNavigateToLogin = () => {
         navigation.navigate('Login');
     };

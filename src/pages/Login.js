@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text, View } from "react-native";
 import { Input } from "react-native-elements";
 import { Button } from '@rneui/themed';
@@ -8,13 +8,25 @@ import { useNavigation } from '@react-navigation/native';
 const Login = () => {
     const navigation = useNavigation();
 
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const handleNavigateToContacts = () => {
+      navigation.navigate('Contacts');
+  };
+
+    const handleLogin = () => {
+      if (email && password) {
+        navigation.navigate('Contacts');
+      } else {
+        console.log("Por favor, preencha todos os campos")
+      }
+    }
+
     const handleNavigateToRegister = () => {
         navigation.navigate('Register');
     };
 
-    const handleNavigateToContacts = () => {
-        navigation.navigate('Contacts');
-    };
     return (
         <View style={styles.container}>
             <View style={styles.formContainer}>
@@ -28,6 +40,8 @@ const Login = () => {
                     inputContainerStyle={styles.input}
                     placeholderTextColor="white"
                     inputStyle={{ color: "white" }}
+                    value={email}
+                    onChangeText={setEmail}
                 />
                 <Input
                     placeholder="Senha"
@@ -36,6 +50,8 @@ const Login = () => {
                     inputContainerStyle={styles.input}
                     placeholderTextColor="white"
                     inputStyle={{ color: "white" }}
+                    value={password}
+                    onChangeText={setPassword}
                 />
                 <Button
                     title="Entrar"
@@ -43,7 +59,7 @@ const Login = () => {
                     containerStyle={styles.buttonContainer}
                     buttonStyle={styles.firstButton}
                     titleStyle={styles.buttonText}
-                    onPress={handleNavigateToContacts}
+                    onPress={handleLogin}
                 />
                 <Button
                     title="Não tem conta? Registre-se!"

@@ -11,10 +11,6 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleNavigateToContacts = () => {
-      navigation.navigate('Contacts');
-  };
-
     const handleLogin = () => {
       if (email && password) {
         navigation.navigate('Contacts');

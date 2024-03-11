@@ -42,15 +42,11 @@ const Contacts = () => {
     setValue(text);
   };
 
-  const handleAddContact = () => {};
-
   const handleDeleteContact = (contactId) => {
     setContacts((prevContacts) =>
       prevContacts.filter((contact) => contact.id !== contactId)
     );
   };
-
-  const handleEditContact = (contactId) => {};
 
   return (
     <View style={styles.container}>

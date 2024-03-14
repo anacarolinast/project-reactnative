@@ -1,32 +1,32 @@
 {
   "contacts": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Angus Young",
       "avatar": "https://i.pinimg.com/564x/5b/85/88/5b858820503fcd29328779aef516a1b3.jpg",
       "phone": "81986594217",
       "email": "angusyoung@gmail.com"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "David Bowie",
       "avatar": "https://ffw.uol.com.br/app/uploads/noticias/2016/01/tumblr-n1u1brlnds1qlcugro1-1280.jpg",
       "phone": "81986594217",
       "email": ""
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Jimmy Page",
       "phone": "81986594217",
       "email": ""
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Sheryl Crow",
       "phone": "81986594217"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Stevie Nicks",
       "avatar": "https://i2-prod.mirror.co.uk/incoming/article12600089.ece/ALTERNATES/s1200b/Stevie-Nicks.jpg",
       "phone": "81986594217"
@@ -35,7 +35,7 @@
       "name": "Malcolm Young",
       "phone": "[object Object]",
       "email": "malcomyoung@gmail.com",
-      "id": 6
+      "id": "6"
     }
   ]
 }

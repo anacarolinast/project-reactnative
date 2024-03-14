@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
   infoContact: {
     fontSize: 16,
     color: "white",
-  }
+  },
 });
 
 export default styles;

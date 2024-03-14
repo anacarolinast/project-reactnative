@@ -4,6 +4,7 @@ import { Input } from "react-native-elements";
 import { Button } from '@rneui/themed';
 import styles from "../styles/styles";
 import { useNavigation } from '@react-navigation/native';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
     const navigation = useNavigation();
@@ -11,16 +12,26 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleLogin = () => {
-      if (email && password) {
-        navigation.navigate('Contacts');
-      } else {
-        console.log("Por favor, preencha todos os campos")
-      }
-    }
-
     const handleNavigateToRegister = () => {
         navigation.navigate('Register');
+    };
+
+    const handleLogin = () => {
+        if (email && password) {
+            const auth = getAuth();
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    navigation.navigate('Contacts');
+                })
+                .catch((error) => {
+                    console.error("Erro ao logar");
+                    alert("Credenciais incorretas");
+                });
+        } else {
+            console.log("Por favor, preencha todos os campos");
+            alert("Por favor, preencha todos os campos");
+        }
     };
 
     return (

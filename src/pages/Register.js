@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { Text, View } from "react-native";
+import { Text, View, Alert } from "react-native";
 import { Input, Button } from "react-native-elements";
 import styles from "../styles/styles";
 import { useNavigation } from '@react-navigation/native';
+import { getAuth, createUserWithEmailAndPassword, fetchSignInMethodsForEmail } from "firebase/auth";
+import app from '../../firebase';
 
 const Register = () => {
     const navigation = useNavigation();
@@ -10,15 +12,38 @@ const Register = () => {
     const [cpf, setCpf] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    
     const handleNavigateToLogin = () => {
         navigation.navigate('Login');
     };
 
     const handleRegister = () => {
         if (name && cpf && email && password) {
-            navigation.navigate('Contacts');
+            const auth = getAuth(app);
+            fetchSignInMethodsForEmail(auth, email)
+                .then((signInMethods) => {
+                    if (signInMethods && signInMethods.length > 0) {
+                        console.error("O email já está em uso");
+                        alert("O email já está em uso");
+                    } else {
+                        createUserWithEmailAndPassword(auth, email, password)
+                            .then((userCredential) => {
+                                const user = userCredential.user;
+                                navigation.navigate('Login');
+                            })
+                            .catch((error) => {
+                                console.error("Erro ao registrar:", error.message);
+                                alert("E-mail em uso");
+                            });
+                    }
+                })
+                .catch((error) => {
+                    console.error("Erro ao verificar o email:", error.message);
+                    alert("Erro ao verificar o email: " + error.message);
+                });
         } else {
             console.log("Por favor, preencha todos os campos");
+            alert("Por favor, preencha todos os campos");
         }
     };
 

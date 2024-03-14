@@ -14,19 +14,19 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen
+      <Stack.Screen
           name="Contacts"
           component={Contacts}
+          options={{ headerShown: false }}
+        />
+      <Stack.Screen
+          name="Login"
+          component={Login}
           options={{ headerShown: false }}
         />
         <Stack.Screen
           name="EditContact"
           component={EditContact}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Login"
-          component={Login}
           options={{ headerShown: false }}
         />
         <Stack.Screen

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, FlatList } from "react-native";
 import { ListItem, Avatar, SearchBar } from "@rneui/base";
-import { HiOutlineDotsVertical, HiOutlinePlus } from "react-icons/hi";
+import { HiOutlineX, HiOutlinePlus } from "react-icons/hi";
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "react-native-svg";
 import axios from "axios";
@@ -16,7 +16,7 @@ const Contacts = () => {
 
   const handleNavigateToInfoContact = (contact) => {
     navigation.navigate("InfoContact", { contact });
-  };  
+  };
 
   const [value, setValue] = useState("");
   const [contacts, setContacts] = useState([]);
@@ -48,6 +48,10 @@ const Contacts = () => {
     );
   };
 
+  const handleNavigateToLogin = () => {
+    navigation.navigate('Login');
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.formContainer}>
@@ -59,7 +63,7 @@ const Contacts = () => {
             size={24}
             onClick={handleNavigateToAddContact}
           />
-          <HiOutlineDotsVertical style={{ color: "white" }} size={24} />
+          <HiOutlineX style={{ color: "white", cursor: "pointer" }} size={24} onClick={handleNavigateToLogin}/>
         </View>
         <SearchBar
           platform="android"
